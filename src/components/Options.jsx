@@ -6,12 +6,12 @@ class Options extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bandStyle: 'round',
+			band: 'round',
 			metal: 'gold',
 			polish: 'glossy',
 			bandWidth: 1,
 			diamondSize: 1,
-			selectedOption: 'bandStyle'
+			selectedOption: 'band'
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -21,9 +21,10 @@ class Options extends Component {
 	handleInputChange(event) {
 		const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
 
-		console.log(value);
-
-		this.setState({ [event.target.name]: value });
+		let change = { [event.target.name]: value };
+		this.setState(change, function(){
+			this.props.onChange(change);
+		});
 	}
 
 	handleOptionButtonClick(event) {
@@ -34,7 +35,7 @@ class Options extends Component {
 		return (
 			<div id="Options">
 				<ul>
-					<li><button onClick={this.handleOptionButtonClick} data-select="bandStyle" className={ this.state.selectedOption === "bandStyle" ? 'open' : '' }>Band Style</button></li>
+					<li><button onClick={this.handleOptionButtonClick} data-select="band" className={ this.state.selectedOption === "band" ? 'open' : '' }>Band Style</button></li>
 					<li><button onClick={this.handleOptionButtonClick} data-select="metal" className={ this.state.selectedOption === "metal" ? 'open' : '' }>Metal</button></li>
 					<li><button onClick={this.handleOptionButtonClick} data-select="polish" className={ this.state.selectedOption === "polish" ? 'open' : '' }>Polish</button></li>
 					<li><button onClick={this.handleOptionButtonClick} data-select="bandWidth" className={ this.state.selectedOption === "bandWidth" ? 'open' : '' }>Band Width</button></li>
@@ -42,12 +43,12 @@ class Options extends Component {
 				</ul>
 
 				<form onChange={this.handleInputChange}>
-					<fieldset className={ this.state.selectedOption === "bandStyle" ? 'open' : '' }>
+					<fieldset className={ this.state.selectedOption === "band" ? 'open' : '' }>
 						<legend>Band Style</legend>
 						<div className="option-select">
-							<label><input type="radio" name="bandStyle" value="round" checked={this.state.bandStyle === "round"} /> Round</label>
-							<label><input type="radio" name="bandStyle" value="pave" checked={this.state.bandStyle === "pave"} /> Pave</label>
-							<label><input type="radio" name="bandStyle" value="twisted" checked={this.state.bandStyle === "twisted"} /> Twisted</label>
+							<label><input type="radio" name="band" value="round" checked={this.state.band === "round"} /> Round</label>
+							<label><input type="radio" name="band" value="pave" checked={this.state.band === "pave"} /> Pave</label>
+							<label><input type="radio" name="band" value="twisted" checked={this.state.band === "twisted"} /> Twisted</label>
 						</div>
 					</fieldset>
 

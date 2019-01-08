@@ -45,13 +45,13 @@ const init_cb = (canvas_elem, success) => {
     return false;
   };
 
-  load();
+  load_main();
 };
 
 /**
  * load the scene data
  */
-const load = () => {
+const load_main = () => {
   m_data.load(APP_ASSETS_PATH + "main.json", load_cb, preloader_cb);
 };
 
@@ -66,12 +66,7 @@ const preloader_cb = percentage => {
  * callback executed when the scene data is loaded
  */
 
-let current = {
-  band: { id: null, name: null },
-  diamond: { id: null, name: null }
-};
-
-let LAST_LOADED_TYPE = "";
+let current = {};
 
 const load_cb = (data_id, success) => {
   if (!success) {
@@ -79,11 +74,7 @@ const load_cb = (data_id, success) => {
     return;
   }
 
-  if (LAST_LOADED_TYPE) {
-    current[LAST_LOADED_TYPE].id = data_id;
-  }
-
-  if (current.diamond.id) {
+  if (current.diamond) {
     const diamond = m_scene.get_object_by_name("Diamond", current.diamond.id);
     const diamondLocation = m_scene.get_object_by_name(
       "DiamondLocation",
@@ -99,23 +90,24 @@ const load_cb = (data_id, success) => {
   console.log(m_scene.get_all_objects());
 };
 
-export const loadFromClick = data => {
-  console.log(data);
+export const load = obj => {
+  let type = Object.keys(obj)[0];
+  let name = obj[type];
+  
+  let isSame = false;
+  if (current[type] !== undefined && name == current[type].name) {
+    isSame = true;
+  }
 
-  if (data.name !== current[data.type].name) {
-    LAST_LOADED_TYPE = data.type;
-    if (current[data.type].id) {
-      m_data.unload(current[data.type].id);
+  if(!isSame){
+    if(current[type] !== undefined){ 
+        m_data.unload(current[type].id);
+    }else{
+        current[type] = {};
+        current[type].name = name;
     }
-    current[data.type].name = data.name;
-    m_data.load(APP_ASSETS_PATH + data.name + ".json", load_cb, null, true);
+
+    m_data.load(APP_ASSETS_PATH + type+"_"+name + ".json", load_cb, null, true);
   }
 };
 
-const rotate = () => {
-  let angle_deg = 45;
-  let angle_rad = m_util.deg_to_rad(angle_deg);
-  let obj = m_scene.get_object_by_name("Geometry", current.band.id);
-
-  m_trans.rotate_y_local(obj, angle_rad);
-};
