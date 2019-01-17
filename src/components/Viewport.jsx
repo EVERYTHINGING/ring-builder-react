@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { init_b4w, load } from "./Blend4Web.jsx";
+import { initVerge3D, loadRing } from "./Verge3D.js";
 import Options from "./Options";
 import "./Viewport.css";
 
@@ -9,18 +9,19 @@ class Viewport extends Component {
   }
 
   componentDidMount() {
-    init_b4w();
+    initVerge3D();
+    loadRing();
   }
 
   handleOptionsChange(obj){
     console.log(obj);
-    load(obj);
+    //loadRing();
   }
 
   render() {
     return (
       <div className="Viewport">
-        <div id="blend4web-container" />
+        <div id="verge3d-container" />
         <Options onChange={this.handleOptionsChange} />
       </div>
     );

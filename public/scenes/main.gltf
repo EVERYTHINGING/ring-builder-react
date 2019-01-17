@@ -1,0 +1,280 @@
+{
+    "asset" : {
+        "generator" : "Soft8Soft Verge3D for Blender add-on", 
+        "version" : "2.0"
+    }, 
+    "cameras" : [
+        {
+            "extensions" : {
+                "S8S_v3d_camera_data" : {
+                    "controls" : "ORBIT", 
+                    "enablePan" : true, 
+                    "moveSpeed" : 1, 
+                    "orbitMaxDistance" : 10000, 
+                    "orbitMaxPolarAngle" : 3.141592653589793, 
+                    "orbitMinDistance" : 0, 
+                    "orbitMinPolarAngle" : 0, 
+                    "orbitTarget" : [
+                        -0.0, 
+                        -0.0, 
+                        0.0
+                    ], 
+                    "rotateSpeed" : 1, 
+                    "viewportFitInitialAspect" : 1, 
+                    "viewportFitType" : "VERTICAL"
+                }
+            }, 
+            "name" : "__DEFAULT__", 
+            "perspective" : {
+                "aspectRatio" : 1, 
+                "yfov" : 0.7853981633974483, 
+                "zfar" : 1000.0, 
+                "znear" : 0.10000000149011612
+            }, 
+            "type" : "perspective"
+        }
+    ], 
+    "extensions" : {
+        "S8S_v3d_data" : {
+            "lights" : [
+                {
+                    "color" : [
+                        1.0, 
+                        1.0, 
+                        1.0
+                    ], 
+                    "intensity" : 1.0, 
+                    "name" : "Sun", 
+                    "profile" : "blender", 
+                    "type" : "directional"
+                }, 
+                {
+                    "color" : [
+                        1.0, 
+                        1.0, 
+                        1.0
+                    ], 
+                    "intensity" : 1.0, 
+                    "name" : "Sun.001", 
+                    "profile" : "blender", 
+                    "type" : "directional"
+                }, 
+                {
+                    "color" : [
+                        1.0, 
+                        1.0, 
+                        1.0
+                    ], 
+                    "intensity" : 1.0, 
+                    "name" : "Sun.002", 
+                    "profile" : "blender", 
+                    "type" : "directional"
+                }, 
+                {
+                    "color" : [
+                        0, 
+                        0, 
+                        0
+                    ], 
+                    "name" : "Ambient_Scene", 
+                    "profile" : "blender", 
+                    "type" : "ambient"
+                }
+            ]
+        }
+    }, 
+    "extensionsUsed" : [
+        "S8S_v3d_material_data", 
+        "S8S_v3d_camera_data", 
+        "S8S_v3d_data", 
+        "S8S_v3d_node_data", 
+        "S8S_v3d_scene_data"
+    ], 
+    "materials" : [
+        {
+            "extensions" : {
+                "S8S_v3d_material_data" : {
+                    "nodeGraph" : {
+                        "edges" : [
+                            {
+                                "fromNode" : 0, 
+                                "fromOutput" : 0, 
+                                "toInput" : 0, 
+                                "toNode" : 1
+                            }
+                        ], 
+                        "nodes" : [
+                            {
+                                "inputs" : [
+                                    [
+                                        1.0, 
+                                        1.0, 
+                                        1.0, 
+                                        1.0
+                                    ], 
+                                    1.0
+                                ], 
+                                "is_active_output" : false, 
+                                "name" : "Background", 
+                                "outputs" : [
+                                    [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        0
+                                    ]
+                                ], 
+                                "type" : "BACKGROUND"
+                            }, 
+                            {
+                                "inputs" : [
+                                    [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        0
+                                    ], 
+                                    [
+                                        0, 
+                                        0, 
+                                        0, 
+                                        0
+                                    ]
+                                ], 
+                                "is_active_output" : true, 
+                                "name" : "World Output", 
+                                "outputs" : [], 
+                                "type" : "OUTPUT_WORLD"
+                            }
+                        ]
+                    }
+                }
+            }, 
+            "name" : "Verge3D_Environment_World"
+        }
+    ], 
+    "nodes" : [
+        {
+            "extensions" : {
+                "S8S_v3d_node_data" : {
+                    "frustumCulling" : true, 
+                    "hidden" : false, 
+                    "light" : 0, 
+                    "renderOrder" : 0
+                }
+            }, 
+            "name" : "Sun", 
+            "rotation" : [
+                -0.7071068286895752, 
+                0.0, 
+                0.0, 
+                0.7071068286895752
+            ], 
+            "scale" : [
+                1.0, 
+                0.9999999403953552, 
+                0.9999999403953552
+            ], 
+            "translation" : [
+                0.0, 
+                24.59758758544922, 
+                0.0
+            ]
+        }, 
+        {
+            "extensions" : {
+                "S8S_v3d_node_data" : {
+                    "frustumCulling" : true, 
+                    "hidden" : false, 
+                    "light" : 1, 
+                    "renderOrder" : 0
+                }
+            }, 
+            "name" : "Sun.001", 
+            "rotation" : [
+                -0.7071068286895752, 
+                0.0, 
+                0.0, 
+                0.7071068286895752
+            ], 
+            "scale" : [
+                1.0, 
+                0.9999999403953552, 
+                0.9999999403953552
+            ], 
+            "translation" : [
+                25.639955520629883, 
+                5.246232032775879, 
+                -5.062932968139648
+            ]
+        }, 
+        {
+            "extensions" : {
+                "S8S_v3d_node_data" : {
+                    "frustumCulling" : true, 
+                    "hidden" : false, 
+                    "light" : 2, 
+                    "renderOrder" : 0
+                }
+            }, 
+            "name" : "Sun.002", 
+            "rotation" : [
+                -0.7071068286895752, 
+                0.0, 
+                0.0, 
+                0.7071068286895752
+            ], 
+            "scale" : [
+                1.0, 
+                0.9999999403953552, 
+                0.9999999403953552
+            ], 
+            "translation" : [
+                -32.34374237060547, 
+                6.65382194519043, 
+                5.2509613037109375
+            ]
+        }, 
+        {
+            "camera" : 0, 
+            "name" : "__DEFAULT_CAMERA__", 
+            "rotation" : [
+                -0.2337448000907898, 
+                0.23341360688209534, 
+                0.0511581115424633, 
+                0.9424777626991272
+            ], 
+            "scale" : [
+                0.9999999403953552, 
+                0.9999998211860657, 
+                0.9999998807907104
+            ], 
+            "translation" : [
+                18.898160934448242, 
+                21.097597122192383, 
+                35.509159088134766
+            ]
+        }
+    ], 
+    "scene" : 0, 
+    "scenes" : [
+        {
+            "extensions" : {
+                "S8S_v3d_scene_data" : {
+                    "light" : 3, 
+                    "worldMaterial" : 0
+                }
+            }, 
+            "extras" : {
+                "animFrameRate" : 24
+            }, 
+            "name" : "Scene", 
+            "nodes" : [
+                2, 
+                1, 
+                0, 
+                3
+            ]
+        }
+    ]
+}
